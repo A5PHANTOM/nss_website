@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Add New Program</h2>
+    <div class="card p-4 shadow-lg">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Title -->
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" required>
+            </div>
+
+            <!-- Poster Image -->
+            <div class="mb-3">
+                <label class="form-label">Poster Image (Optional)</label>
+                <input type="file" name="poster_image" class="form-control">
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" required></textarea>
+            </div>
+
+            <!-- ✅ Multiple Photos -->
+            <div class="mb-3">
+                <label class="form-label">Photos (You can select multiple)</label>
+                <input type="file" name="photos" class="form-control" multiple>  <!-- ✅ FIXED NAME -->
+            </div>
+
+            <!-- More Description -->
+            <div class="mb-3">
+                <label class="form-label">More Description (Optional)</label>
+                <textarea name="more_description" class="form-control"></textarea>
+            </div>
+
+            <!-- ✅ More Photos -->
+            <div class="mb-3">
+                <label class="form-label">More Photos (Optional, select multiple)</label>
+                <input type="file" name="more_photos" class="form-control" multiple>  <!-- ✅ FIXED NAME -->
+            </div>
+
+            <button type="submit" class="btn btn-primary">✅ Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

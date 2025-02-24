@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Manage Programs</h2>
+    <a href="{% url 'add_program' %}" class="btn btn-success mb-3">➕ Add New Program</a>
+
+    <div class="row">
+        {% for program in programs %}
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                {% if program.poster_image %}
+                <img src="{{ program.poster_image.url }}" class="card-img-top" alt="{{ program.title }}">
+                {% else %}
+                <img src="https://via.placeholder.com/300" class="card-img-top" alt="No Image">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ program.title }}</h5>
+                    <p class="card-text">{{ program.description|truncatewords:20 }}</p>
+                    <a href="{% url 'modify_program' program.pk %}" class="btn btn-warning btn-sm">✏️ Modify</a>
+                    <a href="{% url 'remove_program' program.pk %}" class="btn btn-danger btn-sm">🗑️ Remove</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No programs available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

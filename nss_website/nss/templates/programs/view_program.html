@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card p-4 shadow-lg">
+        <!-- ✅ Title -->
+        <h2 class="text-center">{{ program.title }}</h2>
+
+        <!-- ✅ Poster Image (if available) -->
+        {% if program.poster_image %}
+        <div class="text-center">
+            <img src="{{ program.poster_image.url }}" class="img-fluid rounded shadow-sm mt-3" style="max-width: 500px;" alt="Program Poster">
+        </div>
+        {% endif %}
+
+        <!-- ✅ Description -->
+        <div class="mt-4">
+            <h4>Description</h4>
+            <p>{{ program.description }}</p>
+        </div>
+
+        <!-- ✅ Photos (if available) -->
+        {% if photos %}
+        <div class="mt-4">
+            <h4>Photos</h4>
+            <div class="row">
+                {% for photo in photos %}
+                <div class="col-md-4 mb-3 text-center">
+                    <img src="{{ photo.image.url }}" class="img-fluid rounded shadow-sm" alt="Event Photo">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- ✅ More Description (if available) -->
+        {% if program.more_description %}
+        <div class="mt-4">
+            <h4>More Description</h4>
+            <p>{{ program.more_description }}</p>
+        </div>
+        {% endif %}
+
+        <!-- ✅ More Photos (if available) -->
+        {% if more_photos %}
+        <div class="mt-4">
+            <h4>More Photos</h4>
+            <div class="row">
+                {% for photo in more_photos %}
+                <div class="col-md-4 mb-3 text-center">
+                    <img src="{{ photo.image.url }}" class="img-fluid rounded shadow-sm" alt="More Event Photo">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

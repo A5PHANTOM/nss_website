@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Modify Program</h2>
+    <div class="card p-4 shadow-lg">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Title -->
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" value="{{ form.title.value }}" required>
+            </div>
+
+            <!-- Poster Image -->
+            <div class="mb-3">
+                <label class="form-label">Poster Image (Optional)</label>
+                <input type="file" name="poster_image" class="form-control">
+                {% if form.instance.poster_image %}
+                <div class="mt-2 text-center">
+                    <img src="{{ form.instance.poster_image.url }}" class="img-fluid rounded shadow-sm" style="max-width: 300px;" alt="Poster Image">
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" required>{{ form.description.value }}</textarea>
+            </div>
+
+            <!-- Existing Photos with Delete Option -->
+            {% if program.program_photos.all %}
+            <div class="mb-3">
+                <h5>Existing Photos</h5>
+                <div class="row">
+                    {% for photo in program.program_photos.all %}
+                    <div class="col-md-3 text-center mb-2">
+                        <img src="{{ photo.image.url }}" class="img-fluid rounded shadow-sm" style="max-width: 100px;" alt="Existing Photo">
+                        <a href="{% url 'delete_program_photo' photo.id %}" class="btn btn-sm btn-danger mt-1">❌ Delete</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Add New Photos -->
+            <div class="mb-3">
+                <label class="form-label">Add New Photos (Optional, select multiple)</label>
+                <input type="file" name="images" class="form-control" multiple>
+            </div>
+
+            <!-- More Description -->
+            <div class="mb-3">
+                <label class="form-label">More Description (Optional)</label>
+                <textarea name="more_description" class="form-control">{{ form.more_description.value }}</textarea>
+            </div>
+
+            <!-- Existing More Photos with Delete Option -->
+            {% if program.more_program_photos.all %}
+            <div class="mb-3">
+                <h5>Existing More Photos</h5>
+                <div class="row">
+                    {% for photo in program.more_program_photos.all %}
+                    <div class="col-md-3 text-center mb-2">
+                        <img src="{{ photo.image.url }}" class="img-fluid rounded shadow-sm" style="max-width: 100px;" alt="Existing More Photo">
+                        <a href="{% url 'delete_more_program_photo' photo.id %}" class="btn btn-sm btn-danger mt-1">❌ Delete</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Add More Photos -->
+            <div class="mb-3">
+                <label class="form-label">Add More Photos (Optional, select multiple)</label>
+                <input type="file" name="more_images" class="form-control" multiple>
+            </div>
+
+            <button type="submit" class="btn btn-warning w-100">✏️ Update Program</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
