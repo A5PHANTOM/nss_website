@@ -32,7 +32,7 @@
         
         <div class="row">
             <!-- Programs Section -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <a href="{% url 'programs' %}" class="text-decoration-none">
                     <div class="card text-center p-4 shadow-sm">
                         <h4>Programs</h4>
@@ -42,11 +42,26 @@
             </div>
 
             <!-- Volunteers Section -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <a href="{% url 'volunteers' %}" class="text-decoration-none">
                     <div class="card text-center p-4 shadow-sm">
                         <h4>Volunteers</h4>
                         <p>View and manage NSS volunteers</p>
                     </div>
                 </a>
-      
+            </div>
+
+            <!-- Manage Events Section -->
+            <div class="col-md-4">
+                <a href="{% url 'manage_events' %}" class="text-decoration-none">
+                    <div class="card text-center p-4 shadow-sm">
+                        <h4>Manage Events</h4>
+                        <p>Add, edit, and remove upcoming events</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

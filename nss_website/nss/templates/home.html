@@ -196,29 +196,36 @@
 </section>
 
 <!-- Upcoming Events Section -->
+<!-- Upcoming Events Section -->
 <section class="py-5 bg-light">
     <div class="container">
-        <h2 class="text-center mb-4">Upcoming Events</h2>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="p-4 shadow-sm bg-white rounded">
-                    <h4 class="text-danger">Tree Plantation Drive</h4>
-                    <p><strong>Date:</strong> March 10, 2025</p>
-                    <p>Join us in making our campus greener by planting trees and promoting environmental awareness.</p>
-                    <a href="#" class="btn btn-success btn-sm">Register Now</a>
+        <h2 class="text-center mb-4 text-primary">Upcoming Events</h2>
+
+        {% if manage_events %}
+            <div class="row g-4">
+                {% for event in manage_events %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger">{{ event.title }}</h5>
+                            <p class="text-muted"><strong>Date:</strong> {{ event.date }}</p>
+                            <p class="card-text">{{ event.description|truncatewords:20 }}</p>
+                            {% if event.link %}
+                                <a href="{{ event.link }}" class="btn btn-outline-primary btn-sm" target="_blank">More Info</a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-            <div class="col-md-6">
-                <div class="p-4 shadow-sm bg-white rounded">
-                    <h4 class="text-primary">Health Awareness Camp</h4>
-                    <p><strong>Date:</strong> April 5, 2025</p>
-                    <p>We are organizing a free health check-up camp for the community in collaboration with medical professionals.</p>
-                    <a href="#" class="btn btn-info btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
+        {% else %}
+            <p class="text-center text-muted">No upcoming events available.</p>
+        {% endif %}
     </div>
 </section>
+
+
+
 
 <!-- Get Involved Section -->
 <section class="py-5 text-center">

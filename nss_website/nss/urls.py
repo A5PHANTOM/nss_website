@@ -3,7 +3,7 @@ from django.contrib.auth.views import LogoutView
 from django.conf.urls.static import static
 from . import views
 from django.conf import settings
-
+from .views import manage_events, delete_event
 
 urlpatterns = [
     # Home & Admin Routes
@@ -22,6 +22,10 @@ urlpatterns = [
     path("programs/photo/delete/<int:photo_id>/", views.delete_program_photo, name="delete_program_photo"),
     path("programs/more_photo/delete/<int:photo_id>/", views.delete_more_program_photo, name="delete_more_program_photo"),
     path("events/", views.events, name="events"),
+
+#path to manage evenrs 
+    path('manage-events/', manage_events, name='manage_events'),
+    path('delete-event/<int:event_id>/', delete_event, name='delete_event'),
 
     # Admin Panel URLs (Custom Admin Page)
     path('admin/programs/', views.admin_programs, name='admin_programs'),  # ✅ Custom Admin Page for Programs

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Program, ProgramPhoto, MoreProgramPhoto
+from .models import Program, ProgramPhoto, MoreProgramPhoto,UpcomingEvent
 
 class ProgramForm(forms.ModelForm):
     class Meta:
@@ -17,3 +17,8 @@ class MoreProgramPhotoForm(forms.ModelForm):
     class Meta:
         model = MoreProgramPhoto
         fields = ['image']
+
+class UpcomingEventForm(forms.ModelForm):
+    class Meta:
+        model = UpcomingEvent
+        fields = ['title', 'date', 'description', 'link']

@@ -4,10 +4,20 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Program, ProgramPhoto, MoreProgramPhoto
 from .forms import ProgramForm
+from .models import UpcomingEvent
+from .forms import UpcomingEventForm
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    events = UpcomingEvent.objects.all()  # Fetch all events
+    latest_programs = Program.objects.order_by('-id')[:3]  # Fetch latest 3 programs
+
+    # Debugging output
+    print("DEBUG: Total Events Retrieved ->", events.count())
+    for event in events:
+        print(f"Title: {event.title}, Date: {event.date}, Description: {event.description}")
+
+    return render(request, "home.html", {"manage_events": events, "latest_programs": latest_programs})
 
 def admin_login(request):
     if request.method == "POST":
@@ -114,6 +124,33 @@ def events(request):
     programs = Program.objects.all()  # Fetch all programs
     return render(request, "events.html", {"programs": programs})
 
-def home(request):
-    latest_programs = Program.objects.order_by('-id')[:3]  # Fetch latest 3 programs
-    return render(request, "home.html", {"latest_programs": latest_programs})
+# def home(request):
+#     latest_programs = Program.objects.order_by('-id')[:3]  # Fetch latest 3 programs
+#     return render(request, "home.html", {"latest_programs": latest_programs})
+
+
+#events
+
+
+def manage_events(request):
+    events = UpcomingEvent.objects.all()
+
+    if request.method == "POST":
+        form = UpcomingEventForm(request.POST)
+        print(request.POST)  # Debugging: Check form data
+        if form.is_valid():
+            form.save()
+            print("Event saved successfully!")  # Debugging: Success message
+            return redirect('manage_events')
+        else:
+            print("Form errors:", form.errors)  # Debugging: Show form errors
+
+    else:
+        form = UpcomingEventForm()
+
+    return render(request, 'events/manage_events.html', {'events': events, 'form': form})
+def delete_event(request, event_id):
+    event = get_object_or_404(UpcomingEvent, id=event_id)
+    event.delete()
+    return redirect('manage_events')
+

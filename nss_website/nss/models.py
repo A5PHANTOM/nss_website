@@ -40,3 +40,12 @@ class ProgramPhoto(models.Model):
 class MoreProgramPhoto(models.Model):
     program = models.ForeignKey(Program, related_name='more_program_photos', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='more_program_photos/')
+
+class UpcomingEvent(models.Model):
+    title = models.CharField(max_length=255)
+    date = models.DateField()
+    description = models.TextField()
+    link = models.URLField(blank=True, null=True)  # Optional registration link
+
+    def __str__(self):
+        return self.title
