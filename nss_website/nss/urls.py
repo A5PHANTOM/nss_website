@@ -11,7 +11,8 @@ urlpatterns = [
     path('admin-login/', views.admin_login, name='admin_login'),
     path("admin-dashboard/", views.admin_dashboard, name="admin_dashboard"),
     path("logout/", LogoutView.as_view(next_page="admin_login"), name="logout"),
-    path("volunteers/", views.volunteers, name="volunteers"),
+    path('volunteers/', views.volunteers, name='volunteers'),
+    path('about/', views.about, name='about'),
 
     # Programs Management
     path('programs/', views.programs, name='programs'),  # ✅ List Programs

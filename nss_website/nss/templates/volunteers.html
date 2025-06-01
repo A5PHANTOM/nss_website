@@ -1,2 +1,126 @@
-<h2>Volunteers Page</h2>
-<p>List of NSS volunteers...</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NSS Volunteers - AWH Engineering College</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f6fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #2c3e50;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .volunteer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .volunteer-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .volunteer-card:hover {
+      transform: scale(1.03);
+    }
+
+    .volunteer-name {
+      font-size: 1.3rem;
+      color: #34495e;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .volunteer-contact {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>NSS Volunteers</h1>
+    <p>AWH Engineering College</p>
+  </header>
+
+  <main>
+    <h2>Our Core Volunteer Team</h2>
+    <div class="volunteer-grid">
+      <div class="volunteer-card">
+        <div class="volunteer-name">Muhammed Nabeel</div>
+        <div class="volunteer-contact">📞 62825 92130</div>
+      </div>
+      <div class="volunteer-card">
+        <div class="volunteer-name">Fathima Shifa</div>
+        <div class="volunteer-contact">📞 90375 12422</div>
+      </div>
+      <div class="volunteer-card">
+        <div class="volunteer-name">Abhishek</div>
+        <div class="volunteer-contact">📞 98955 42691</div>
+      </div>
+      <div class="volunteer-card">
+        <div class="volunteer-name">Aysha Amal</div>
+        <div class="volunteer-contact">📞 99955 41512</div>
+      </div>
+      <div class="volunteer-card">
+        <div class="volunteer-name">Ajnish</div>
+        <div class="volunteer-contact">📞 96454 69415</div>
+      </div>
+      <div class="volunteer-card">
+        <div class="volunteer-name">Abdul Gafoor</div>
+        <div class="volunteer-contact">📞 90370 21924</div>
+      </div>
+      <div class="volunteer-card">
+        <div class="volunteer-name">Dhiljith</div>
+        <div class="volunteer-contact">📞 90746 97769</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 NSS Unit - AWH Engineering College. All Rights Reserved.
+  </footer>
+
+</body>
+</html>

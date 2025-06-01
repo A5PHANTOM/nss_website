@@ -93,6 +93,8 @@ def remove_program(request, pk):
     messages.success(request, "Program deleted successfully.")
     return redirect('programs')
 
+def about(request):
+    return render(request, 'about.html')
 
 def view_program(request, pk):
     program = get_object_or_404(Program, pk=pk)
